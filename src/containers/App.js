@@ -13,7 +13,7 @@ import './App.css';
 const mapStateToProps = (state) => {
   return {
     searchField: state.searchRobots.searchField,
-    robots: state.requestRobots.robots,
+    friends: state.requestRobots.robots,
     isPending: state.requestRobots.isPending
   }
 }
@@ -37,9 +37,9 @@ class App extends Component {
   }
 
   render() {
-    const { robots, searchField, onSearchChange, isPending } = this.props;
-    const filteredRobots = robots.filter(robot => {
-      return robot.name.toLowerCase().includes(searchField.toLowerCase());
+    const { friends, searchField, onSearchChange, isPending } = this.props;
+    const filteredFriends = friends.filter(friend => {
+      return friend.name.toLowerCase().includes(searchField.toLowerCase());
     })
     return (
       <div className='tc'>
@@ -48,7 +48,7 @@ class App extends Component {
         <Scroll>
           { isPending ? <h1>Loading</h1> :
             <ErrorBoundry>
-              <CardList robots={filteredRobots} />
+              <CardList friends={filteredFriends} />
             </ErrorBoundry>
           }
         </Scroll>
